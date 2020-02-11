@@ -1,4 +1,4 @@
-package br.douglasborba.Appium;
+package br.douglasborba.appium;
 
 import java.net.MalformedURLException;
 import java.net.URL;
