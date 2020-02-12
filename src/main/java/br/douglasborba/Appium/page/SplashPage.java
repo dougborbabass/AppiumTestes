@@ -12,9 +12,6 @@ import br.douglasborba.appium.core.DriverFactory;
 public class SplashPage extends BasePage{
 	
 	public boolean isTelaSplashVisivel() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@text='Splash!']")));
 		return existeElementoPorTexto("Splash!");
 	}
 	
