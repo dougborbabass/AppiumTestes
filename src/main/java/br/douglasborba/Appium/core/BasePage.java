@@ -2,7 +2,11 @@ package br.douglasborba.appium.core;
 
 import static br.douglasborba.appium.core.DriverFactory.getDriver;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+
+import io.appium.java_client.MobileElement;
 
 public class BasePage {
 	public void escrever(By by, String texto) {
@@ -28,5 +32,10 @@ public class BasePage {
 
 	public boolean isCheckMarcado(By by) {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
+	}
+	
+	public boolean existeElementoPorTexto(String texto) {
+		List<MobileElement> elements = getDriver().findElements(By.xpath("//*[@text='"+texto+"'"));
+		return elements.size() > 0;
 	}
 }
