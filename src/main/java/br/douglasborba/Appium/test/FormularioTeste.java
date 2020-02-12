@@ -2,16 +2,15 @@ package br.douglasborba.appium.test;
 
 import java.net.MalformedURLException;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.douglasborba.appium.core.DriverFactory;
+import br.douglasborba.appium.core.BaseTest;
 import br.douglasborba.appium.page.FormularioPage;
 import br.douglasborba.appium.page.MenuPage;
 
-public class FormularioTeste {
+public class FormularioTeste extends BaseTest {
 
 	private MenuPage menu = new MenuPage();
 	private FormularioPage formularioPage = new FormularioPage();
@@ -20,11 +19,8 @@ public class FormularioTeste {
 	public void InicializarAppium() throws MalformedURLException {
 		menu.acessarFormulario();
 	}
-
-	@After
-	public void tearDown() {
-		DriverFactory.killDriver();
-	}
+	
+	
 
 	@Test
 	public void devePreencherCampoTexto() throws MalformedURLException {
