@@ -1,6 +1,7 @@
 package br.douglasborba.appium.test;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.douglasborba.appium.core.BaseTest;
@@ -12,10 +13,14 @@ public class AlertTeste extends BaseTest{
 	private MenuPage menu = new MenuPage();
 	private AlertaPage page = new AlertaPage();
 	
+	@Before
+	public void setup() {
+		menu.acessarAlertas();
+	}
+	
 	@Test
 	public void deveConfirmarAlerta() {
 		// acessar menu alerta
-		menu.acessarAlertas();
 		
 		// deve clicar em alert confirm
 		page.clicarAlertaConfirm();
@@ -32,6 +37,21 @@ public class AlertTeste extends BaseTest{
 		
 		// sair
 		page.sair();
+	}
+	
+	@Test
+	public void deveClicarForaAlerta() {
+		// acessar menu alerta
+		
+		// clicar alerta simples
+		page.clicarAlertaSimples();
+		
+		// clicar fora da caixa
+		esperar(1000);
+		page.clicarForaCaixa();
+		
+		// verificar a mensagem
+		Assert.assertFalse(page.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
 	}
 
 }

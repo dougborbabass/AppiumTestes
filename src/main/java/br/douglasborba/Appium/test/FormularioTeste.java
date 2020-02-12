@@ -13,6 +13,7 @@ import br.douglasborba.appium.core.BaseTest;
 import br.douglasborba.appium.core.DriverFactory;
 import br.douglasborba.appium.page.FormularioPage;
 import br.douglasborba.appium.page.MenuPage;
+import io.appium.java_client.MobileBy;
 
 public class FormularioTeste extends BaseTest {
 
@@ -101,5 +102,23 @@ public class FormularioTeste extends BaseTest {
 		// Verificar
 		Assert.assertEquals("Nome: Douglas Borba", formularioPage.obterNomeCadastrado());
 
+	}
+	
+	@Test
+	public void deveAlterarData() {
+		formularioPage.clicarPorTexto("01/01/2000");
+		formularioPage.clicarPorTexto("20");
+		formularioPage.clicarPorTexto("OK");
+		
+		Assert.assertTrue(formularioPage.existeElementoPorTexto("20/2/2000"));
+	}
+	
+	@Test
+	public void deveAlterarHora() {
+		formularioPage.clicarPorTexto("06:00");
+		formularioPage.clicar(MobileBy.AccessibilityId("10"));
+		formularioPage.clicar(MobileBy.AccessibilityId("50"));
+		formularioPage.clicarPorTexto("OK");
+		Assert.assertTrue(formularioPage.existeElementoPorTexto("10:50"));
 	}
 }
