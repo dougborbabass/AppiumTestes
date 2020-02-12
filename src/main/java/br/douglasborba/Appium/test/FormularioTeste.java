@@ -1,7 +1,5 @@
 package br.douglasborba.appium.test;
 
-import java.net.MalformedURLException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,14 +14,14 @@ public class FormularioTeste extends BaseTest {
 	private FormularioPage formularioPage = new FormularioPage();
 
 	@Before
-	public void InicializarAppium() throws MalformedURLException {
+	public void InicializarAppium(){
 		menu.acessarFormulario();
 	}
 	
 	
 
 	@Test
-	public void devePreencherCampoTexto() throws MalformedURLException {
+	public void devePreencherCampoTexto(){
 
 		formularioPage.escreverNome("Douglas");
 
@@ -33,7 +31,7 @@ public class FormularioTeste extends BaseTest {
 	}
 
 	@Test
-	public void deveInteragirCombo() throws MalformedURLException {
+	public void deveInteragirCombo(){
 
 		// Clicar no combo
 		formularioPage.selecionarCombo("Nintendo Switch");
@@ -44,7 +42,7 @@ public class FormularioTeste extends BaseTest {
 	}
 
 	@Test
-	public void deveInteragirSwitchCheckBox() throws MalformedURLException {
+	public void deveInteragirSwitchCheckBox(){
 
 		// Verificar status dos elementos
 		Assert.assertFalse(formularioPage.isCheckMarcado());
@@ -61,7 +59,7 @@ public class FormularioTeste extends BaseTest {
 	}
 
 	@Test
-	public void deveRealizarCadastro() throws MalformedURLException {
+	public void deveRealizarCadastro() {
 
 		// Preencher campos
 		formularioPage.escreverNome("Douglas Borba");
