@@ -3,7 +3,9 @@ package br.douglasborba.appium.page;
 import org.openqa.selenium.By;
 
 import br.douglasborba.appium.core.BasePage;
+import br.douglasborba.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 
 public class FormularioPage extends BasePage {
 
@@ -37,6 +39,16 @@ public class FormularioPage extends BasePage {
 
 	public boolean isSwitchMarcado() {
 		return isCheckMarcado(MobileBy.AccessibilityId("switch"));
+	}
+	
+	public void clicarSeekBar(double posicao) {
+		MobileElement seek = DriverFactory.getDriver().findElement(MobileBy.AccessibilityId("slid"));
+		
+		int y = seek.getLocation().y + (seek.getSize().height /2);
+		int x = (int) (seek.getLocation().x + (seek.getSize().width * posicao));
+		
+		tap(x,y);
+		
 	}
 
 	public void salvar() {
