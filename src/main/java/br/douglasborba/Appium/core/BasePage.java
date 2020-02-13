@@ -62,6 +62,22 @@ public class BasePage {
 		.perform();
 	}
 	
+	public void swipe(double inicio, double fim) {
+		Dimension size = getDriver().manage().window().getSize();
+		
+		int y = size.height / 2;
+		
+		int start_x = (int)(size.width * inicio);
+		int final_x = (int)(size.width * fim);
+		
+		new TouchAction(getDriver())
+		.press(start_x, y)
+		.waitAction(Duration.ofMillis(500))
+		.moveTo(final_x, y)
+		.release()
+		.perform();
+	}
+	
 	public String obterTituloAlerta() {
 		return obterTexto(By.id("android:id/alertTitle"));
 	}
